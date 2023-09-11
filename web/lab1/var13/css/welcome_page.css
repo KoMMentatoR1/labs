@@ -1,0 +1,43 @@
+.welcome-block {
+  background-color: var(--second-background-color);
+  color: #333;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.welcome-block h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.count {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.customer-count {
+  font-weight: bold;
+  color: #ff6600;
+  font-size: 24px;
+}
+
+.products {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #555;
+}
