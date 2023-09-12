@@ -1,7 +1,8 @@
 :root {
   --border-color: #bdbdbd;
-  --background-color: #1e88e5;
-  --second-background-color: #f0f0f0;
-  --background-color-hover: #0e56a8;
+  --primary-bg-color: #1e88e5;
+  --secondary-bg-color: #f0f0f0;
+  --primary-bg-color-hover: #0e56a8;
   --primary-color: #ffffff;
+  --secondary-color: #1565c0;
 }

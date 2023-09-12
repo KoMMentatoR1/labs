@@ -1,16 +1,19 @@
+/* Container */
 .container {
   width: 100%;
   height: 100vh;
   display: grid;
   grid-template-rows: 60px 1fr 60px;
+  color: var(--primary-color);
 }
+
+/* Header */
 
 .header {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background-color: var(--background-color);
-  background-image: linear-gradient(to bottom, #1e88e5, #1565c0);
+  padding: 10px 40px;
+  background-color: var(--secondary-bg-color);
 }
 
 .logo {
@@ -30,18 +33,44 @@
 }
 
 .logo_text {
-  font-size: 20px;
-  color: var(--primary-color);
+  font-size: 25px;
+  color: var(--secondary-color);
 }
+
+/* Main container */
 
 .body {
+  background-color: #eeeeee;
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 350px 1fr;
+  grid-gap: 50px;
+  padding: 30px;
 }
 
+/* Contant container */
+
+.contant-container {
+  background-image: radial-gradient(#1e88e5, #1565c0);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+}
+
+.content-header {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+
+/* Sidebar */
+
 .sidebar {
-  background-color: var(--background-color);
-  background-image: linear-gradient(to top, #1e88e5, #1565c0);
+  background-image: radial-gradient(#1e88e5, #1565c0);
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
 .menu_list {
@@ -55,11 +84,12 @@
   font-size: 23px;
   padding: 10px 13px;
   transition: 0.2s linear;
+  list-style-type: none;
 }
 
 .menu_list_item:hover {
   cursor: pointer;
-  background-color: var(--background-color-hover);
+  background-color: var(--primary-bg-color-hover);
 }
 
 .menu_item_link {
@@ -67,7 +97,15 @@
   color: var(--primary-color);
 }
 
+/* Footer */
+
 .footer {
-  border-top: 1px solid var(--border-color);
-  background-color: var(--background-color);
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: end;
+  padding-right: 40px;
 }

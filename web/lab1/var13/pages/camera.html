@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PhotoMarket</title>
-    <link rel="icon" href="./assets/photo-camera.png" />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/var.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="icon" href="../assets/photo-camera.png" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/var.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/product.css" />
   </head>
   <body>
     <div class="container">
       <header class="header">
         <div class="logo">
           <div class="header_logo">
-            <img class="logo_icon" src="./assets/photo-camera.png" />
+            <img class="logo_icon" src="../assets/photo-camera.png" />
           </div>
-          <div class="logo_text">Photo market</div>
+          <div class="logo_text">Кадро магия</div>
         </div>
       </header>
       <section class="body">
-        <div class="sidebar">
+        <nav class="sidebar">
           <ul class="menu_list">
             <a class="menu_item_link" href="./index.html">
               <li class="menu_list_item">Главная страницы</li>
@@ -42,34 +42,37 @@
               <li class="menu_list_item">О фирме</li>
             </a>
           </ul>
-        </div>
-        <div class="product">
-          <h2 class="product-header">Примеры объективов</h2>
-          <table>
+        </nav>
+        <div class="contant-container">
+          <h2 class="content-header">Примеры фотокамер</h2>
+          <table class="product-table">
             <tr>
-              <th class="table-title">Название</th>
-              <th class="table-title">Фокусное расстояние</th>
-              <th class="table-title">Цена</th>
+              <th class="table-header">Название</th>
+              <th class="table-header">Характеристики</th>
+              <th class="table-header">Цена</th>
             </tr>
             <tr>
-              <td>Canon EF 50mm f/1.8</td>
-              <td>50 мм</td>
-              <td>$199</td>
+              <td class="table-cell">Canon EOS 5D Mark IV</td>
+              <td class="table-cell">30.4 МП, Full Frame, 4K видео</td>
+              <td class="table-cell">$2,799</td>
             </tr>
             <tr>
-              <td>Sony FE 24-70mm f/2.8 GM</td>
-              <td>24-70 мм</td>
-              <td>$2,199</td>
+              <td class="table-cell">Sony Alpha a7 III</td>
+              <td class="table-cell">24.2 МП, Full Frame, 4K видео</td>
+              <td class="table-cell">$1,999</td>
             </tr>
             <tr>
-              <td>Nikon AF-S 85mm f/1.4G</td>
-              <td>85 мм</td>
-              <td>$1,699</td>
+              <td class="table-cell">Nikon D850</td>
+              <td class="table-cell">45.7 МП, Full Frame, 4K видео</td>
+              <td class="table-cell">$3,299</td>
             </tr>
           </table>
         </div>
       </section>
-      <footer class="footer">dsadsad</footer>
+      <footer class="footer">
+        <div class="copyright">© А.М. Щербина, 2023</div>
+        <a class="email" href="mailto:leshasherbina@gmail.com">leshasherbina@gmail.com</a>
+      </footer>
     </div>
   </body>
 </html>
