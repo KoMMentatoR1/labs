@@ -137,3 +137,19 @@ body {
 .timer {
   font-size: 30px;
 }
+
+.lider_board {
+  border: 1px solid var(--primary-bg-color-hover);
+  border-collapse: collapse;
+}
+
+.lider_board_cell {
+  border: 1px solid var(--primary-bg-color-hover);
+  color: var(--secondary-color);
+}
+
+.lider_board_container {
+  display: none;
+  flex-direction: column;
+  gap: 30px;
+}
