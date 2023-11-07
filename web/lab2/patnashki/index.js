@@ -228,51 +228,51 @@ function rememberMe(time) {
 }
 
 const renderLiderTable = () => {
-    const winners = localStorage.getItem("users");
-    const winnerData = JSON.parse(winners);
+  const winners = localStorage.getItem("users");
+  const winnerData = JSON.parse(winners);
 
-    let winnerDataMass = [];
-    Object.entries(winnerData).forEach(([key, value]) => {
-      winnerDataMass.push([key, value]);
-    });
+  let winnerDataMass = [];
+  Object.entries(winnerData).forEach(([key, value]) => {
+    winnerDataMass.push([key, value]);
+  });
 
-    winnerDataMass = winnerDataMass.sort((a, b) => a[0] - b[1]);
-  
-    const container = document.querySelector('.lider_board_container')
-    container.style.display = 'flex'
-    const playground = document.querySelector('.playground_container')
-    playground.style.display = 'none'
-    const playButtons = document.querySelector(".button_group");
-    playButtons.style.display = "none";
+  winnerDataMass = winnerDataMass.sort((a, b) => a[0] - b[1]);
 
-    const table = document.querySelector('.lider_board');
-    table.classList = ["lider_board"];
-    let tr = document.createElement("tr");
-    for (let tableTitle of ["Место", "Ник", "Счет"]) {
-      const th = document.createElement("th");
-      th.classList = ["lider_board_cell"];
-      th.innerHTML = tableTitle;
-      tr.appendChild(th);
-    }
-    table.replaceChildren(tr);
-    winnerDataMass.forEach((winner, index) => {
-      tr = document.createElement("tr");
-      let td = document.createElement("td");
-      td.innerHTML = index;
-      td.classList = ["lider_board_cell"];
-      tr.appendChild(td);
-      td = document.createElement("td");
-      td.innerHTML = winner[0];
-      td.classList = ["lider_board_cell"];
-      tr.appendChild(td);
-      td = document.createElement("td");
-      td.innerHTML = formatTime(winner[1]);
-      td.classList = ["lider_board_cell"];
-      tr.appendChild(td);
-      table.appendChild(tr);
-    });
-    liderBoardContainer.append(table);
-  };
+  const container = document.querySelector('.lider_board_container')
+  container.style.display = 'flex'
+  const playground = document.querySelector('.playground_container')
+  playground.style.display = 'none'
+  const playButtons = document.querySelector(".button_group");
+  playButtons.style.display = "none";
+
+  const table = document.querySelector('.lider_board');
+  table.classList = ["lider_board"];
+  let tr = document.createElement("tr");
+  for (let tableTitle of ["Место", "Ник", "Счет"]) {
+    const th = document.createElement("th");
+    th.classList = ["lider_board_cell"];
+    th.innerHTML = tableTitle;
+    tr.appendChild(th);
+  }
+  table.replaceChildren(tr);
+  winnerDataMass.forEach((winner, index) => {
+    tr = document.createElement("tr");
+    let td = document.createElement("td");
+    td.innerHTML = index;
+    td.classList = ["lider_board_cell"];
+    tr.appendChild(td);
+    td = document.createElement("td");
+    td.innerHTML = winner[0];
+    td.classList = ["lider_board_cell"];
+    tr.appendChild(td);
+    td = document.createElement("td");
+    td.innerHTML = formatTime(winner[1]);
+    td.classList = ["lider_board_cell"];
+    tr.appendChild(td);
+    table.appendChild(tr);
+  });
+  liderBoardContainer.append(table);
+};
 
 document.querySelector("#startGame").onclick = startPlay;
 document.getElementById("left").onclick = moveLeft;
