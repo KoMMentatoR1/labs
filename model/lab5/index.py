@@ -9,13 +9,13 @@ N = Nx * Ny
 # Шаг по пространственным координатам
 hx = 1
 hy = 1
-ht = 100
+ht = 0.1
 
 # Временный интервал 
-lt = 1000
+lt = 10
 
 # погрешность вычисления сеточных уравнений
-eps = 1e-4
+eps = 1e-3
 
 # Коэффициенты, стоящие в граничных условиях
 alphax = 0
@@ -30,14 +30,14 @@ sigma = 0.5
 C = np.zeros(N)
 
 # одномерные вещественные массивы для поля коэффициента турбулентного обмена
-mu = np.full(N, 10)
+mu = np.full(N, 2)
 
 # одномерные вещественные массивы для функции, описывающей интенсивность и распределение источников
 f = np.zeros(N)
 
 # одномерные вещественные массивы для компонентов вектора скорости
-u = np.zeros(N)
-v = np.zeros(N)
+u = np.full(N, 3)
+v = np.full(N, 4)
 
 # одномерные вещественные массивы для функции, описывающей заполненность ячеек
 O = np.zeros(N)
@@ -74,25 +74,26 @@ def calculate():
             O[m0] = 1;
     
     # Точечный источник
-    i = Nx / 4;
-    j = Ny / 4;
-    m0 = int(i + j * Nx);
-    f[m0] = 1;
+    # i = Nx / 4;
+    # j = Ny / 4;
+    # m0 = int(i + j * Nx);
+    # C[m0] = 1;
 
     # Задание линейного источника
-    for l in range(3):
-        i = 40 + l;
-        j = 60;
-        m0 = i + j * Nx;
-        f[m0] = 1;
+    for k in range(3):
+        for l in range(3):
+            i = 10 + l;
+            j = 10 + k;
+            m0 = i + j * Nx;
+            C[m0] = 0.1;
 
     while True:
 
         for i in range(1, Nx - 1):
             for j in range(1, Ny - 1):
 
-                if i > 40 and j > 70 and i < 50 and j < 80:
-                    continue
+                # if i > 40 and j > 70 and i < 50 and j < 80:
+                #     continue
                 
                 m0 = i + j * Nx
         
@@ -132,7 +133,7 @@ def calculate():
                 A[m0] = q0 / ht + B1[m0] + B2[m0] + B3[m0] + B4[m0] - sigma * (abs(q1 - q2) * alphax + abs(q3 - q4) * alphay) * mu[m0]
 
                 if (A[m0] == 0):
-                    print("ВСЕ ПЛОХО!!!! " + m0)
+                    print("ВСЕ ПЛОХО!!!! " + str(m0) )
         
                 # Расчет коэффициентов для узлов, стоящих в центре шаблона на предыдущем временном слое
                 B5[m0] = q0 / ht - B6[m0] - B7[m0] - B8[m0] - B9[m0] + (1 - sigma) * (abs(q1 - q2) * alphay + abs(q3 - q4) * alphay) * mu[m0]
@@ -160,8 +161,8 @@ def seidel(A, B1, B2, B3, B4, F, C, eps, Nx, Ny):
         for i in range(1, Nx - 1):
             for j in range(1, Ny - 1):
 
-                if i > 40 and j > 70 and i < 50 and j < 80:
-                    continue
+                # if i > 40 and j > 70 and i < 50 and j < 80:
+                #     continue
                 
                 m0 = i + j * Nx
                 # Значения номеров элементов, стоящих в окрестности центра шаблона
@@ -206,4 +207,4 @@ def write_matrix_to_excel(matrix_lists, file_path, steps):
 
 calculate()
 
-write_matrix_to_excel(matrixResultInTimeRange, 'dsa', [0, 1, 3, 5, 9])
+write_matrix_to_excel(matrixResultInTimeRange, 'dsa', [0, 10, 30, 50, 99])
