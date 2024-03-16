@@ -1,0 +1,1 @@
+export const simvols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
