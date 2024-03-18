@@ -9,7 +9,7 @@ export const TvHistoriesScreen = ({navigation}) => {
         fetch('https://lichess.org/api/tv/channels')
             .then(response => response.json())
             .then(data => {
-                const dataArray = Object.entries(data).map(([name, value]) => ({ name, ...value }));
+                const dataArray = Object.entries(data).map(([name, value]) => ({ name, ...value })).filter(({name}) => name !== 'antichess');
                 setData(dataArray);
             })
             .catch(error => console.error(error));

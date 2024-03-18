@@ -1,5 +1,6 @@
-import { Button, Card, Modal, Text } from '@ui-kitten/components';
-import { View } from 'react-native';
+import { Button, Card, Text } from '@ui-kitten/components';
+import { View, Dimensions } from 'react-native';
+import { Modal } from '../Modal/Modal';
 
 export const GameOverModal = ({open, handleClose, navigation, winner}) => {
 
@@ -9,10 +10,8 @@ export const GameOverModal = ({open, handleClose, navigation, winner}) => {
     }
 
     return (
-        <Modal
-            visible={open}
-        >
-        <Card disabled={true}>
+        <Modal open={open} transform={[{ translateY: -Dimensions.get('window').height * 0.2}, {translateX: -200}]}>
+        <Card disabled={true} style={{marginLeft: 30}}>
           <Text category='h5' style={{textAlign: 'center'}}>
             Игра окончена
           </Text>

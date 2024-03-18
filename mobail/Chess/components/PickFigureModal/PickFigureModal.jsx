@@ -1,21 +1,19 @@
-import { View, TouchableWithoutFeedback } from "react-native"
+import { View, TouchableWithoutFeedback, Dimensions } from "react-native"
 import RookIcon from "../../assets/svg/RookIcon"
 import QueenIcon from "../../assets/svg/QueenIcon"
 import BisshopIcon from "../../assets/svg/BisshopIcon"
 import KnightIcon from "../../assets/svg/KnightIcon"
-import {  Card, Modal, Text } from '@ui-kitten/components';
+import {  Card, Text } from '@ui-kitten/components';
+import { Modal } from "../Modal/Modal"
 
 export const PickFigureModal = ({handlePickFigure, open}) => {
     return (
-        <Modal
-            visible={open}
-            style={{top: '15%'}}
-        >
-            <Card disabled={true} style={{width: 300}}>
+        <Modal open={open}>
+            <Card disabled={true} style={{height: 230, width: 300}}>
                 <Text category='h5' style={{textAlign: 'center'}}>
                     Выберите фигу
                 </Text>
-                <View style={{flex: 1}}>
+                <View >
                     <View style={{flexDirection: 'row', justifyContent: 'space-between'}}> 
                         <TouchableWithoutFeedback onPress={() => handlePickFigure('r')}>
                             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', padding: 10}}>

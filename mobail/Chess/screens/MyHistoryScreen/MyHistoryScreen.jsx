@@ -11,6 +11,7 @@ export const MyHistoryScreen = ({navigation, route}) => {
     const [history, setHistory] = useState(null)
     const [chessState, setChessState] = useState(new Chess())
     const [currentMove, setCurrentMove] = useState()
+    const [vinnerText, setVinnerText] = useState('')
 
     useEffect(() => {
         getHistory(historyId).then(data => {
@@ -26,11 +27,23 @@ export const MyHistoryScreen = ({navigation, route}) => {
         }
         try {
             setChessState(new Chess(move))
+            const checkState = new Chess(move)
+            if(checkState.isDraw()) {
+                setVinnerText('Ничья')
+            }
+            if(checkState.isGameOver()) {
+                setVinnerText(checkState.turn() === 'w' ? 'Черные победили' : 'Белые победили')
+            }
+            else {
+                setVinnerText('')
+            }
             setCurrentMove(index)
         } catch (e) {
             console.log(e)
         }
     }
+
+    
 
     return (
         <View style={{
@@ -70,6 +83,9 @@ export const MyHistoryScreen = ({navigation, route}) => {
                 <ChessPlatform width={300} height={300} chess={chessState}/>
                 <View style={{position: 'absolute', width: "100%", left: '80%',  height: '100%',}}>
                     <HistoryDashboard onLoadPosition={handleLoadPosition} history={history} currentMove={currentMove}/>
+                </View>
+                <View style={{position: 'absolute', width: "100%", left: 20}}>
+                    <Text style={{textAlign: 'start'}} category="h6">{vinnerText}</Text>
                 </View>
             </View>
         </View>

@@ -10,6 +10,8 @@ export const TvHistoryScreen = ({navigation, route}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [chessState, setChessState] = useState(new Chess())
     const [currentMove, setCurrentMove] = useState()
+    const [vinnerText, setVinnerText] = useState('')
+    const filteredHistory = history.filter((item) => !!item.lm)
 
     useEffect(() => {
         setIsLoading(true)
@@ -32,6 +34,27 @@ export const TvHistoryScreen = ({navigation, route}) => {
         }
         try {
             setChessState(new Chess(move))
+            const checkState = new Chess(move)
+            if(checkState.isDraw()) {
+                setVinnerText('Ничья')
+            }
+            else if (checkState.isGameOver()) {
+                setVinnerText(checkState.turn() === 'w' ? 'Черные победили' : 'Белые победили')
+            } 
+            else if(filteredHistory.length - 1 === index) {
+                if(history.at(-1).winner === 'white') {
+                    setVinnerText('Белые победили')
+                }
+                else if(history.at(-1).winner === 'black') {
+                    setVinnerText('Черные победили')
+                }
+                else {
+                    setVinnerText('Ничья')
+                }
+            }
+            else {
+                setVinnerText('')
+            }
             setCurrentMove(index)
         } catch (e) {
             console.log(e)
@@ -77,6 +100,9 @@ export const TvHistoryScreen = ({navigation, route}) => {
                     <ChessPlatform width={300} height={300} chess={chessState}/>
                     <View style={{position: 'absolute', width: "100%", left: '80%',  height: '100%',}}>
                         <HistoryDashboard isTv={true} onLoadPosition={handleLoadPosition} history={history} currentMove={currentMove}/>
+                    </View>
+                    <View style={{position: 'absolute', width: "100%", left: 20}}>
+                        <Text style={{textAlign: 'start'}} category="h6">{vinnerText}</Text>
                     </View>
                 </>}
             </View>

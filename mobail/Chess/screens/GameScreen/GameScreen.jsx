@@ -9,7 +9,6 @@ import { Chess } from 'chess.js'
 import { Button } from "@ui-kitten/components";
 
 export const GameScreen = ({navigation}) => {
-    const [time, setTime] = useState(0)
     const [exitModalOpen, setExitModalOpen] = useState(false)
     const [selected, setSelected] = useState(null)
     const [motion, setMotion] = useState('w') 
@@ -32,16 +31,6 @@ export const GameScreen = ({navigation}) => {
         setPickFigureModalOpen(false)
         chess.current.move({ from: selected, to: cellToMove, strict: true, promotion: figure})
     }
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTime((state) => state + 1)
-        }, 1000)
-
-        return () => {
-            clearInterval(timer)
-        }
-    }, [time])
 
     const handleSelect = (cell) => () => {
         if(chess.current.moves({square: cell}).length) {
@@ -96,6 +85,13 @@ export const GameScreen = ({navigation}) => {
     }
 
     const restartGame = () => {
+        setExitModalOpen(false)
+        setSelected(null)
+        setMotion('w')
+        setCellToMove(null)
+        setSelectedFigure(null)
+        setPickFigureModalOpen(false)
+        setGameOverModalOpen(false)
         chess.current.reset()
     }
 

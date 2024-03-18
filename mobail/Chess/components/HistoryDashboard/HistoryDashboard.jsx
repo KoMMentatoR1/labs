@@ -89,10 +89,10 @@ export const HistoryDashboard = ({history, onLoadPosition, currentMove, isTv}) =
                 marginTop: 20,
                 maxWidth: '100%'
             }}>
-                <Button size="tiny" onPress={() => currentMove !== undefined  &&  onLoadPosition(isTv ? history[currentMove - 1]?.fen : history[currentMove - 1]?.after, currentMove === 0 ? undefined : currentMove - 1)}>
+                <Button size="tiny" onPress={() => currentMove !== undefined  &&  onLoadPosition(isTv ? filteredHistory[currentMove === 0 ? 0 : currentMove - 1]?.fen : history[currentMove === 0 ? 0 : currentMove - 1]?.after, currentMove === 0 ? 0 : currentMove - 1)}>
                     Предыдущий ход
                 </Button>
-                <Button size="tiny" style={{marginTop: 10}} onPress={() => currentMove !== undefined && onLoadPosition((isTv && filteredHistory[currentMove + 1]) ? history[currentMove + 1]?.fen : history[currentMove + 1]?.after, (isTv ? filteredHistory[currentMove + 1] : history[currentMove + 1]) ? currentMove + 1 : undefined)}>
+                <Button size="tiny" style={{marginTop: 10}} onPress={() => currentMove !== undefined && onLoadPosition(isTv ? filteredHistory[currentMove + 1 === filteredHistory.length ? currentMove : currentMove + 1]?.fen : history[currentMove + 1 === history.length ? currentMove : currentMove + 1]?.after, (isTv ? filteredHistory[currentMove + 1] : history[currentMove + 1]) ? currentMove + 1 : currentMove)}>
                     Следующий ход
                 </Button>
             </View>
