@@ -7,7 +7,7 @@ def read_excel(file_path):
     df = pd.read_excel(file_path, header=None)
     return df.to_numpy()
 
-folder_path = "*.xlsx"
+folder_path = "./removePeace/*.xlsx"
 
 file_paths = glob.glob(folder_path)
 

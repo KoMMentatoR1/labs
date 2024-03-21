@@ -85,7 +85,7 @@ export const MyHistoryScreen = ({navigation, route}) => {
                     <HistoryDashboard onLoadPosition={handleLoadPosition} history={history} currentMove={currentMove}/>
                 </View>
                 <View style={{position: 'absolute', width: "100%", left: 20}}>
-                    <Text style={{textAlign: 'start'}} category="h6">{vinnerText}</Text>
+                    <Text style={{textAlign: 'left'}} category="h6">{vinnerText}</Text>
                 </View>
             </View>
         </View>

@@ -6,7 +6,12 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer();
+const canvas = document.querySelector('#c');
+const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    canvas,
+    alpha: true,
+  });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -141,6 +146,49 @@ controls.dampingFactor = 0.25;
 controls.rotateSpeed = 0.35;
 
 let rotateSwitch = true
+const stickGeometry = new THREE.CylinderGeometry(0.1, 0.1, 2);
+const stickMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+
+const stick1 = new THREE.Mesh(stickGeometry, stickMaterial);
+stick1.position.z = -3
+scene.add(stick1);
+
+const stick2 = new THREE.Mesh(stickGeometry, stickMaterial);
+stick2.position.z = -3
+stick2.position.y = -1.9
+stick2.position.x = 0.5
+stick2.rotation.z = 0.4
+scene.add(stick2);
+
+const stick3 = new THREE.Mesh(stickGeometry, stickMaterial);
+stick3.position.z = -3
+stick3.position.y = -1.9
+stick3.position.x = -0.5
+stick3.rotation.z = -0.4
+scene.add(stick3);
+
+const stick4 = new THREE.Mesh(stickGeometry, stickMaterial);
+stick4.position.z = -3
+stick4.position.y = -0.5
+stick4.position.x = -0.5
+stick4.rotation.z = -0.4
+scene.add(stick4);
+
+const stick5 = new THREE.Mesh(stickGeometry, stickMaterial);
+stick5.position.z = -3
+stick5.position.y = -0.5
+stick5.position.x = 0.5
+stick5.rotation.z = 0.4
+scene.add(stick5);
+
+let headGeometry = new THREE.SphereGeometry(0.35, 16, 16);
+let headMaterial = new THREE.MeshBasicMaterial({map: texture, color: 0xfffffff });
+
+const head = new THREE.Mesh(headGeometry, headMaterial);
+head.position.z = -3
+head.position.y = 1.2
+head.rotation.y = -2
+scene.add(head);
 
 
 // Анимация
@@ -163,8 +211,6 @@ const animate = function () {
             rotateSwitch = true
         }
     }
-
-
 
     controls.update();
 

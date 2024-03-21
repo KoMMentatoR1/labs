@@ -34,7 +34,7 @@ def split_str(targetStr):
 def count_result(sigma, file_name):
     hx = 1.0
     ht = 0.1
-    T = 100.0
+    T = 30.0
     t = 0.0
 
     l1 = 0.5

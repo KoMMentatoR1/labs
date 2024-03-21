@@ -11,14 +11,14 @@ export const TvHistoryScreen = ({navigation, route}) => {
     const [chessState, setChessState] = useState(new Chess())
     const [currentMove, setCurrentMove] = useState()
     const [vinnerText, setVinnerText] = useState('')
-    const filteredHistory = history.filter((item) => !!item.lm)
+    const filteredHistory = history?.filter((item) => !!item.lm) || []
 
     useEffect(() => {
         setIsLoading(true)
         fetch(`https://lichess.org/api/stream/game/${historyId}`)
             .then(response => response.text())
             .then(text => {
-                const data = text.split('\n').filter(Boolean).map(JSON.parse);
+                const data = text.split('\n')?.filter(Boolean)?.map(JSON.parse) || [];
                 setHistory(data)
             })
             .catch(error => console.error(error))
@@ -102,7 +102,7 @@ export const TvHistoryScreen = ({navigation, route}) => {
                         <HistoryDashboard isTv={true} onLoadPosition={handleLoadPosition} history={history} currentMove={currentMove}/>
                     </View>
                     <View style={{position: 'absolute', width: "100%", left: 20}}>
-                        <Text style={{textAlign: 'start'}} category="h6">{vinnerText}</Text>
+                        <Text style={{textAlign: 'left'}} category="h6">{vinnerText}</Text>
                     </View>
                 </>}
             </View>
